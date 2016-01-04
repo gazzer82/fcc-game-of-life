@@ -1,19 +1,9 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Dropdown = require('./jsx/dropdown.jsx');
+import {Component, PropTypes} from 'react';
 
 require("./css/main.scss");
 
-var options = {
-  title: 'Choose a dessert',
-  items: [
-    'Apple Pie',
-    'Peach Cobbler',
-    'Coconut Cream Pie'
-  ]
-};
 // Ask react to render the class
-var element = React.createElement(Dropdown,options);
+//var element = React.createElement(Dropdown,options);
 
 // Tell it where to place rendered element in the DOM
-ReactDOM.render(element, document.querySelector('.target'));
+//ReactDOM.render(element, document.querySelector('.target'));
