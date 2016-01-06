@@ -41,5 +41,11 @@ module.exports = {
       //inject: 'body',
       filename: '../index.html'
     })
-  ]
+  ],
+  resolve: {
+        extensions: [
+            '.js', '.jsx',
+            '.css', '.styl' '.scss', '.less', '.sass'
+        ]        
+    }
 }
