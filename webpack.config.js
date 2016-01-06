@@ -37,8 +37,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'ReactStarter',
-      //template: './src/html/index_template.html',
-      //inject: 'body',
+      template: './src/html/index_template.html',
+      inject: 'body',
       filename: '../index.html'
     })
   ],
@@ -46,6 +46,6 @@ module.exports = {
         extensions: [
             '.js', '.jsx',
             '.css', '.styl' '.scss', '.less', '.sass'
-        ]        
+        ]
     }
 }
