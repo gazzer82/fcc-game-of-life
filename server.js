@@ -6,8 +6,10 @@ new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true,
-  devtool: "eval",
-  output.pathinfo: true
+  devtool: 'eval-source-map',
+  output: {
+    pathinfo: true
+  }
 }).listen(3000, 'localhost', function (err, result) {
   if (err) {
     console.log(err);

@@ -5,12 +5,14 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-    './src/app.jsx'
+    './src/app'
   ],
+  devtool: 'source-map',
   output:{
     path: __dirname + '/dist',
     publicPath: '/dist',
-    filename: "app.js"
+    filename: "app.js",
+    pathinfo: true
   },
   module: {
     loaders:[
@@ -35,6 +37,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'ReactStarter',
       template: './src/html/index_template.html',
@@ -44,8 +47,8 @@ module.exports = {
   ],
   resolve: {
         extensions: [
-            '.js', '.jsx',
-            '.css', '.styl' '.scss', '.less', '.sass'
-        ]
-    }
+            '', '.js', '.jsx',
+            '.css', '.styl', '.scss', '.less', '.sass'
+          ]
+  }
 }
