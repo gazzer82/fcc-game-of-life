@@ -3,11 +3,14 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 console.log(__dirname);
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:3000', // WebpackDevServer host and port
-    'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-    './src/index'
+    './src/app'
   ],
-  devtool: 'eval',
+  devtool: 'source-map',
+  output:{
+    path: __dirname + '/dist/js',
+    publicPath: '/js',
+    filename: "app.js"
+  },
   resolve: {
         extensions: [
             '', '.js', '.jsx',
@@ -16,25 +19,19 @@ module.exports = {
           alias: {
           }
   },
-  output:{
-    path: __dirname + '/dist/js',
-    publicPath: '/js',
-    filename: "app.js",
-    pathinfo: true
-  },
   module: {
     loaders:[
       //JSX
       {
         test: /\.jsx$/,
         exclude: /(node_modules)/,
-        loaders: ['react-hot','babel']
+        loaders: ['babel']
       },
       //JS
       {
         test: /\.js$/,
         exclude: /(node_modules)/,
-        loaders: ['react-hot','babel']
+        loaders: ['babel']
       },
       //SCSS
       {
@@ -49,30 +46,28 @@ module.exports = {
       },
       //Fonts
       {
-      test: /\.(woff|woff2)$/,
-      loader: "url?limit=10000&mimetype=application/font-woff"
+        test: /\.(woff|woff2)$/,
+        loader: "url?limit=10000&mimetype=application/font-woff"
       },
       {
-      test: /\.ttf$/,
-      loader: "url?limit=10000&mimetype=application/octet-stream"
+        test: /\.ttf$/,
+        loader: "url?limit=10000&mimetype=application/octet-stream"
       },
       {
-      test: /\.eot$/,
-      loader: "file"
+        test: /\.eot$/,
+        loader: "file"
       },
       //Images
       {
-      test: /\.svg$/,
-      loader: "url?limit=10000&mimetype=image/svg+xml"
+        test: /\.svg$/,
+        loader: "url?limit=10000&mimetype=image/svg+xml"
       }
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       title: 'ReactStarter',
-      template: './html/index_template.html',
+      template: './src/html/index_template.html',
       inject: 'body',
       filename: '../index.html'
     })
