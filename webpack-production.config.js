@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 console.log(__dirname);
 module.exports = {
   entry: [
-    './src/app'
+    './src/index'
   ],
   devtool: 'source-map',
   output:{
@@ -67,7 +67,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'ReactStarter',
-      template: './src/html/index_template.html',
+      template: './html/index_template.html',
       inject: 'body',
       filename: '../index.html'
     })
