@@ -44,35 +44,36 @@ module.exports = {
       },
       //CSS
       { test: /\.css$/,
-        exclude: /(node_modules)/,
         loader: "style-loader!css-loader"
       },
       //Fonts
       {
       test: /\.(woff|woff2)$/,
-      loader: "url?limit=10000&mimetype=application/font-woff"
+        loader: "url?limit=10000&mimetype=application/font-woff"
       },
       {
       test: /\.ttf$/,
-      loader: "url?limit=10000&mimetype=application/octet-stream"
+        loader: "url?limit=10000&mimetype=application/octet-stream"
       },
       {
       test: /\.eot$/,
-      loader: "file"
+        loader: "file"
       },
       //Images
       {
-      test: /\.svg$/,
-      loader: "url?limit=10000&mimetype=image/svg+xml"
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "url?limit=25000"
       }
+
     ]
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
-      title: 'ReactStarter',
-      template: './html/index_template.html',
+      template: 'underscore-template-loader!./html/index_template.html',
+      favicon: './images/favicon.ico',
+      title: 'React Starter',
       inject: 'body',
       filename: '../index.html'
     })

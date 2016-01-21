@@ -3,7 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 console.log(__dirname);
 module.exports = {
   entry: [
-    './src/app'
+    './src/index'
   ],
   devtool: 'source-map',
   output:{
@@ -41,7 +41,6 @@ module.exports = {
       },
       //CSS
       { test: /\.css$/,
-        exclude: /(node_modules)/,
         loader: "style-loader!css-loader"
       },
       //Fonts
@@ -59,15 +58,15 @@ module.exports = {
       },
       //Images
       {
-        test: /\.svg$/,
-        loader: "url?limit=10000&mimetype=image/svg+xml"
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "url?limit=25000"
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'ReactStarter',
-      template: './src/html/index_template.html',
+      template: 'underscore-template-loader!./html/index_template.html',
+      title: 'React Starter',
       inject: 'body',
       filename: '../index.html'
     })

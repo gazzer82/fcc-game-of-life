@@ -8,6 +8,7 @@ Currently this starter is using
 * react-redux
 * normalize.css
 * redux-promise
+* image-webpack-loader
 
 For workflow i am using
 * webpack

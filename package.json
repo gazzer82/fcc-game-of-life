@@ -1,7 +1,7 @@
 {
   "name": "webpack-react-starter",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "A starter project for React project using Redux and Node",
   "main": "index.js",
   "scripts": {
     "postinstall": "webpack --config ./webpack-production.config --progress --colors",
@@ -19,7 +19,8 @@
     "babel-preset-react": "^6.3.13",
     "css-loader": "^0.23.1",
     "express": "^4.13.3",
-    "html-webpack-plugin": "^1.7.0",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "^2.7.1",
     "jsx-loader": "^0.13.2",
     "marked": "^0.3.5",
     "node-sass": "^3.4.2",
@@ -32,6 +33,9 @@
     "redux-promise": "^0.5.1",
     "sass-loader": "^3.1.2",
     "style-loader": "^0.13.0",
+    "underscore-template-loader": "^0.6.0",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
     "webpack": "^1.12.9"
   },
   "devDependencies": {
