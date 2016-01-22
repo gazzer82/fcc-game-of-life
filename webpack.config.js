@@ -72,7 +72,7 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       template: 'underscore-template-loader!./html/index_template.html',
-      favicon: './images/favicon.ico',
+      //favicon: './images/favicon.ico',
       title: 'React Starter',
       inject: 'body',
       filename: '../index.html'
