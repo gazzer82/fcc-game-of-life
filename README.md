@@ -1,6 +1,6 @@
-# ReactStarter
+# Game of Life
 
-#### A template for my new React projects, early work in progress.
+#### An implementation of Game of Life in React
 
 Currently this starter is using
 * React
@@ -25,3 +25,5 @@ For DEV only
 For Production
 * node
 * express
+
+View the running app on Heroku http://gameoflife.garethjeanne.com

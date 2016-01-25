@@ -73,7 +73,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'underscore-template-loader!./html/index_template.html',
       //favicon: './images/favicon.ico',
-      title: 'React Starter',
+      title: 'Game of Life',
       inject: 'body',
       filename: '../index.html'
     })

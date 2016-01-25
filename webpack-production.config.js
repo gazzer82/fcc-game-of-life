@@ -66,7 +66,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'underscore-template-loader!./html/index_template.html',
-      title: 'React Starter',
+      title: 'Game of Life',
       inject: 'body',
       filename: '../index.html'
     })

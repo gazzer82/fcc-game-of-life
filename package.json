@@ -1,8 +1,12 @@
 {
-  "name": "webpack-react-starter",
+  "name": "game-of-life",
   "version": "1.0.1",
-  "description": "A starter project for React project using Redux and Node",
+  "description": "A Game of Life implementation in React",
   "main": "index.js",
+  "repository" :
+  { "type" : "git",
+    "url" : "https://github.com/gazzer82/freeCodeCamp_gameOfLife.git"
+  }
   "scripts": {
     "postinstall": "webpack --config ./webpack-production.config --progress --colors",
     "start": "node server.js",
