@@ -1,2 +1,50 @@
 //Normalise my CSS
-@import "~normalize.css/normalize.css"
+@import "~normalize.css/normalize.css";
+@import "./colors";
+
+//grid boxG
+
+.grid-box{
+  //display: inline;
+  border: 0;
+  margin: 0;
+  float: left;
+  border-width: 1px;
+  border-color: $borders;
+  border-style: solid;
+  box-sizing: border-box;
+  background-color: black;
+}
+
+//Cell sizes
+
+.fifty-wide{
+  width: 2%;
+}
+
+.seventy-wide{
+  width: 1.42857%;
+}
+
+.hundred-wide{
+  width: 1%;
+}
+
+.grid-box-inner{
+  width: 100%;
+  padding-top: 100%;
+}
+
+//Cell colors
+
+.cell-old {
+    background: $cell-old;
+}
+
+.cell-alive {
+    background: $cell-alive;
+}
+
+.cell-dead {
+    background: $cell-dead;
+}

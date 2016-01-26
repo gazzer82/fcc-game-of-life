@@ -69,6 +69,9 @@ module.exports = {
       title: 'Game of Life',
       inject: 'body',
       filename: '../index.html'
+    }),
+    new webpack.ProvidePlugin({
+      d3: 'd3'
     })
   ]
 }
