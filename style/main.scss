@@ -2,7 +2,13 @@
 @import "~normalize.css/normalize.css";
 @import "./colors";
 
-//grid boxG
+//General layout
+
+.grid-outer{
+  width: 70%;
+  padding-left: 15%;
+}
+//grid box
 
 .grid-box{
   //display: inline;
@@ -36,15 +42,23 @@
 }
 
 //Cell colors
+.cell{
+  background: $cell-old;
+  animation-name: ease-in-out;
+  animation-duration: 250ms;
+}
 
 .cell-old {
-    background: $cell-old;
+    opacity: 1;
+    transform: translateZ(0);
 }
 
 .cell-alive {
-    background: $cell-alive;
+    opacity: 0.5;
+    transform: translateZ(0);
 }
 
 .cell-dead {
-    background: $cell-dead;
+    opacity: 0;
+    transform: translateZ(0);
 }

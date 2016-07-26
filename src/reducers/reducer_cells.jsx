@@ -1,15 +1,24 @@
-import { CELLS_UPDATED } from '../actions/actions_cells';
-import { GENERATE_CELLS } from '../actions/actions_cells';
+//import action constants
+import { GENERATE_CELLS, CELL_DEAD, CELL_ALIVE, CELLS_UPDATED } from '../actions/actions_cells';
 
+//Respons to actions
 export default function(state = [], action){
-  console.log(action.type);
   switch(action.type){
+    //Generate Cells
     case GENERATE_CELLS:
-      console.log('GENERATE_CELLS action creator');
-      return state;
-    default:
-      console.log('default action creator');
-      return state;
+      return action.payload;
+    //Cell set as alive
+    case CELL_ALIVE:
+      var arrayTemp = state.slice()
+      arrayTemp[action.payload].status = 1;
+      return arrayTemp
+    //Cell set as dead
+    case CELL_DEAD:
+      var arrayTemp = state.slice()
+      arrayTemp[action.payload].status = 0;
+      return arrayTemp
+    case CELLS_UPDATED:
+      return action.payload;
   }
   return state;
 }

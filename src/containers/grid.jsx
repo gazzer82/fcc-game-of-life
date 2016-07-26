@@ -1,55 +1,30 @@
 import React, {Component} from 'react';
-import GridBox from '../components/grid_box.jsx';
+import Cell from '../components/cell';
 
 //Redux stuff
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {generateCells} from '../actions/actions_cells'
+import {generateCells, stepState} from '../actions/actions_cells'
 
 //import Dimensions from 'react-dimensions';
 
 //Default objects for our grid sizes
 
-const fiftyWide = {
-  width: 50,
-  height: 30
-};
-
-const seventyWide = {
-  width: 70,
-  height: 50
-};
-
-const hundredWide = {
-  width: 100,
-  height: 80
-};
-
 class Grid extends Component {
   constructor(props){
     super(props);
     this.generateGrid = this.generateGrid.bind(this);
-    this.state = {
-      widthClass: 'fifty-wide',
-      sizeObject: fiftyWide
-    }
-    //this.props.generateCells();
-    console.log(this.props.generateCells);
-    console.log('cells are ' + this.props.cells);
+    this.props.generateCells();
   }
   generateGrid(){
-    var boxGrid = [];
-    const boxCount = this.state.sizeObject.width*this.state.sizeObject.height;
-    for(var i=0; i< boxCount; i++){
-      boxGrid.push(<GridBox key={i} number={i+1} widthClass={this.state.widthClass}/>)
-    }
-    return boxGrid;
+    return this.props.cells.map( (cell, index)=> {
+      return <Cell key={index} number={index+1} id={index} widthClass={this.props.res.widthClass} colorClass={cell.status} generation={cell.generation} currentGeneration={this.props.generation}/>
+    })
   }
   render(){
     return(
       <div className='grid-outer'>
         {this.generateGrid()}
-        //<button onClick={this.props.generateCells()} >Generate Cells </button>
       </div>
     )
   }
@@ -57,12 +32,17 @@ class Grid extends Component {
 
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
-    generateCells: generateCells
-  },dispatch);
+    generateCells,
+    stepState
+    },dispatch);
 }
 
-function mapStateToProps({cells}){
-  return {cells};
+function mapStateToProps({cells, res, generation}){
+  return {
+    cells: cells,
+    res: res,
+    generation
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Grid);
