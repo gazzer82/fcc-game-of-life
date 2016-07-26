@@ -8,6 +8,7 @@ export default class App extends Component {
       <div>
         <Grid />
         <LowerButtons />
+        <a href='https://github.com/gazzer82/fcc-game-of-life'><h4>Source Code</h4></a>
       </div>
     );
   }
