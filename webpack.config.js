@@ -7,7 +7,7 @@ module.exports = {
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
     './src/index'
   ],
-  devtool: 'eval',
+  devtool: 'source-map',
   resolve: {
         extensions: [
             '', '.js', '.jsx',

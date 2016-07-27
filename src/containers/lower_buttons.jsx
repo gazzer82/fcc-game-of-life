@@ -12,7 +12,7 @@ class LowerButtons extends Component {
   startTimer(){
     var that = this;
     if(this.props.controls.game === 'running'){
-        this.props.stepState();
+        this.props.stepState(this.props.res, this.props.generation);
     }
     setTimeout(() => this.triggerTimer(), this.props.controls.speed);
   }
@@ -22,12 +22,13 @@ class LowerButtons extends Component {
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    //this.startTimer();
-    setInterval(() => this.props.stepState(), 100);
   }
   handleClick(res){
     this.props.setRes(res);
     this.props.generateCells();
+  }
+  componentDidMount(){
+    this.startTimer();
   }
   render(){
     return (
@@ -65,10 +66,11 @@ function mapDispatchToProps(dispatch){
   },dispatch);
 }
 
-function mapStateToProps({controls, generation}){
+function mapStateToProps({controls, generation, res}){
   return {
     controls,
-    generation
+    generation,
+    res
   };
 }
 

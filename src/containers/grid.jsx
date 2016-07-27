@@ -16,9 +16,15 @@ class Grid extends Component {
     this.generateGrid = this.generateGrid.bind(this);
     this.props.generateCells();
   }
+  /*shouldComponentUpdate(nextProps, nextState) {
+    //return false;
+    //return this.props.cells !== nextProps.cells
+    return nextProps.generation = 1;
+    //return (this.props.colorClass !== nextProps.colorClass || this.props.widthClass !== nextProps.widthClass || (nextProps.currentGeneration - nextProps.generation) === 3);
+  }*/
   generateGrid(){
     return this.props.cells.map( (cell, index)=> {
-      return <Cell key={index} number={index+1} id={index} widthClass={this.props.res.widthClass} colorClass={cell.status} generation={cell.generation} currentGeneration={this.props.generation}/>
+      return <Cell key={index} number={index+1} id={index} widthClass={this.props.res.widthClass} colorClass={cell.class}/>
     })
   }
   render(){

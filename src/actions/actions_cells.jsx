@@ -129,9 +129,13 @@ export function stepState(){
   }
 }*/
 
-export function stepState(){
+export function stepState(res, generation){
   return {
-    type: STEP_STATE
+    type: STEP_STATE,
+    payload: {
+      res,
+      generation
+    }
   }
 }
 

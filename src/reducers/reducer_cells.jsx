@@ -65,35 +65,43 @@ function calculateCol(width, count){
   return Math.floor(count%width);
 }
 
-function updateGeneration(generation){
-  return {
-    type: UPDATE_GENERATION,
-    payload: generation
+function setCellClass(generation, status, stateGeneration){
+  if(status === 0){
+    return 'dead'
+  } else {
+      if((stateGeneration - generation) < 3){
+        return 'alive'
+      } else {
+        return 'old'
+      }
   }
 }
 
-function newState(res,state){
-  return state;
+function newState(payload,state){
   return state.map((cell,index) => {
-    if(index < res.total){
+    if(index < payload.res.total){
       const cellDetails = {
         index: index,
         status: cell.status,
-        width: res.width,
-        height: res.height,
-        total: res.total,
-        row: calculateRow(res.width, index),
-        col: calculateCol(res.width, index)
+        width: payload.res.width,
+        height: payload.res.height,
+        total: payload.res.total,
+        row: calculateRow(payload.res.width, index),
+        col: calculateCol(payload.res.width, index)
       }
       let status = setStatus(state, cellDetails);
       if(status !== cell.status){
         return {
           ...cell,
-          status: setStatus(state, cellDetails),
-          generation: state.generation + 1
+          status: status,
+          generation: payload.generation + 1,
+          class: setCellClass(payload.generation + 1, status, payload.Generation)
         }
       } else {
-        return cell;
+        return {
+          ...cell,
+          class: setCellClass(cell.generation, cell.status, payload.generation)
+        }
       }
     } else {
       return cell;
@@ -101,10 +109,12 @@ function newState(res,state){
   })
 }
 
-function calculateState(current){
-  const res = current.res;
-  const state = current.cells;
-  return newState(res,state);
+function calculateState(payload, state){
+  let returnState = newState(payload,state);
+  //return state;
+  //const res = current.res;
+  //console.log(newState);
+  return returnState;
   //return{
     //type: CELLS_UPDATED,
     //payload: updatedState
@@ -128,9 +138,9 @@ export default function(state = [], action){
       arrayTemp[action.payload].status = 0;
       return arrayTemp
     case STEP_STATE:
-      //const newState = calculateState(state);
-      //return newState;
-      return state;
+      const newState = calculateState(action.payload, state);
+      return newState;
+      //return state;
     case CELLS_UPDATED:
       return action.payload;
   }

@@ -11,8 +11,8 @@ export default class Cell extends Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
   shouldComponentUpdate(nextProps, nextState) {
-    return false;
-    //return (this.props.colorClass !== nextProps.colorClass || this.props.widthClass !== nextProps.widthClass || (nextProps.currentGeneration - nextProps.generation) === 3);
+    //return false;
+    return (this.props.colorClass !== nextProps.colorClass || this.props.widthClass !== nextProps.widthClass || (nextProps.currentGeneration - nextProps.generation) === 3);
   }
   clickHandler(){
     if(this.props.colorClass === 1){
@@ -33,7 +33,7 @@ export default class Cell extends Component {
   }
   render(){
     return (
-      <div className={'grid-box ' + this.props.widthClass}><div onClick={this.clickHandler} className={'grid-box-inner cell cell-' + this.cellClass()}></div></div>
+      <div className={'grid-box ' + this.props.widthClass}><div onClick={this.clickHandler} className={'grid-box-inner cell cell-' + this.props.colorClass}></div></div>
     )
   }
 }
