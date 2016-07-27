@@ -22,7 +22,8 @@ class LowerButtons extends Component {
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.startTimer();
+    //this.startTimer();
+    setInterval(() => this.props.stepState(), 100);
   }
   handleClick(res){
     this.props.setRes(res);
@@ -44,7 +45,7 @@ class LowerButtons extends Component {
         <div>
           <button onClick={() => {this.props.setSpeed(500)}}>Slow</button>
           <button onClick={() => {this.props.setSpeed(250)}}>Medium</button>
-          <button onClick={() => {this.props.setSpeed(125)}}>Fast</button>
+          <button onClick={() => {this.props.setSpeed(100)}}>Fast</button>
         </div>
         <h1>{this.props.generation}</h1>
       </div>

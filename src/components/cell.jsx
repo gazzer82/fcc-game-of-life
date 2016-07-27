@@ -11,7 +11,8 @@ export default class Cell extends Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
   shouldComponentUpdate(nextProps, nextState) {
-    return (this.props.colorClass !== nextProps.colorClass || this.props.widthClass !== nextProps.widthClass);
+    return false;
+    //return (this.props.colorClass !== nextProps.colorClass || this.props.widthClass !== nextProps.widthClass || (nextProps.currentGeneration - nextProps.generation) === 3);
   }
   clickHandler(){
     if(this.props.colorClass === 1){

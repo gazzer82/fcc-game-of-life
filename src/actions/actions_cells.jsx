@@ -5,11 +5,12 @@ export const CELL_ALIVE = 'CELL_ALIVE';
 export const CELL_DEAD = 'CELL_DEAD';
 export const CLEAR_CELLS = 'CLEAR_CELLS';
 export const UPDATE_GENERATION = 'UPDATE_GENERATION';
+export const STEP_STATE = 'STEP_STATE';
 
 
 import {stopGame} from './actions_controls';
 
-function findRow(state, cell, target){
+/*function findRow(state, cell, target){
   //Set current tow by adding cell's row with the target -1, 0, +1
   let targetRow = cell.row + target;
   //Check to see if we're above or below the target
@@ -81,9 +82,10 @@ function updateGeneration(generation){
 }
 
 function newState(res,state,generation){
+  return state;
   return state.map((cell,index) => {
     if(index < res.total){
-      var cellDetails = {
+      const cellDetails = {
         index: index,
         status: cell.status,
         width: res.width,
@@ -120,10 +122,16 @@ function calculateState(current, generation){
 
 export function stepState(){
   return (dispatch, getState) => {
-    const current =  getState();
-    const generation = current.generation + 1;
-    dispatch(calculateState(current,generation));
-    dispatch(updateGeneration(generation));
+    //const current =  getState();
+    //const generation = current.generation + 1;
+    //dispatch(calculateState(current,generation));
+    //dispatch(updateGeneration(generation));
+  }
+}*/
+
+export function stepState(){
+  return {
+    type: STEP_STATE
   }
 }
 
@@ -153,7 +161,7 @@ export function generateCells() {
   return (dispatch, getState) => {
     const state = getState();
     dispatch(generateCellsInternal(state.res, false));
-    dispatch(updateGeneration(0));
+    //dispatch(updateGeneration(0));
   }
 }
 
@@ -163,7 +171,7 @@ export function clearCells(){
     const state = getState();
     dispatch(generateCellsInternal(state.res, true));
     dispatch(updateGeneration(0));
-    dispatch(stopGame());
+    //dispatch(stopGame());
   }
 }
 
