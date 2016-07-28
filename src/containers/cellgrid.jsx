@@ -7,12 +7,12 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {generateCells, stepState, setAlive, setDead} from '../actions/actions_cells';
 
-import Perf from 'react-addons-perf';
+//import Perf from 'react-addons-perf';
 
 //Grid
 import { Grid, Row, Col } from 'react-flexbox-grid/lib/index';
 
-window.Perf = Perf;
+//window.Perf = Perf;
 
 var canvas;
 var ctx;
