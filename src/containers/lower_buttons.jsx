@@ -8,17 +8,10 @@ import {setRes} from '../actions/actions_res';
 import {generateCells, stepState, clearCells} from '../actions/actions_cells';
 import {startGame, stopGame, setSpeed} from '../actions/actions_controls';
 
+//Grid
+import { Grid, Row, Col } from 'react-flexbox-grid/lib/index';
+
 class LowerButtons extends Component {
-  startTimer(){
-    var that = this;
-    if(this.props.controls.game === 'running'){
-        this.props.stepState(this.props.res, this.props.generation);
-    }
-    setTimeout(() => this.triggerTimer(), this.props.controls.speed);
-  }
-  triggerTimer(){
-    this.startTimer();
-  }
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -27,33 +20,49 @@ class LowerButtons extends Component {
     this.props.setRes(res);
     this.props.generateCells();
   }
-  componentDidMount(){
-    this.startTimer();
-  }
   render(){
     return (
-      <div>
-        <div className='lower-buttons'>
-          <button onClick={() => {this.handleClick('50')}}>50x30</button>
-          <button onClick={() => {this.handleClick('70')}}>70x50</button>
-          <button onClick={() => {this.handleClick('100')}}>100x80</button>
-        </div>
-        <div>
-          <button onClick={() => {this.props.startGame()}}>Run</button>
-          <button onClick={() => {this.props.stopGame()}}>Pause</button>
-          <button onClick={() => {this.props.clearCells()}}>Clear</button>
-        </div>
-        <div>
-          <button onClick={() => {this.props.setSpeed(500)}}>Slow</button>
-          <button onClick={() => {this.props.setSpeed(250)}}>Medium</button>
-          <button onClick={() => {this.props.setSpeed(100)}}>Fast</button>
-        </div>
-        <h1>{this.props.generation}</h1>
-      </div>
+      <Grid>
+        <Row className='lower-button-row' around="xs">
+          <Col className='lower-button-col' xs={8} md={6} lg={5}>
+            <Row around="xs">
+              <Col xs={12}>
+                <Row>
+                  <Col xs={4}>
+                    <span>Board Size:</span>
+                  </Col>
+                  <Col xs={8}>
+                    <button className={`lower-buttons ${(this.props.res.width === 50) ? ' button-active' : ''}`} onClick={() => {this.handleClick('50')}}>50x30</button>
+                    <button className={`lower-buttons ${(this.props.res.width === 70) ? ' button-active' : ''}`} onClick={() => {this.handleClick('70')}}>70x50</button>
+                    <button className={`lower-buttons ${(this.props.res.width === 100) ? ' button-active' : ''}`} onClick={() => {this.handleClick('100')}}>100x80</button>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+            <Row around="xs">
+              <Col xs={12}>
+                <Row>
+                  <Col xs={4}>
+                    <span>Sim Speed:</span>
+                  </Col>
+                  <Col xs={8}>
+                    <button className={`lower-buttons ${(this.props.controls.speed === 500) ? ' button-active' : ''}`} onClick={() => {this.props.setSpeed(500)}}>Slow</button>
+                    <button className={`lower-buttons ${(this.props.controls.speed === 250) ? ' button-active' : ''}`} onClick={() => {this.props.setSpeed(250)}}>Medium</button>
+                    <button className={`lower-buttons ${(this.props.controls.speed === 100) ? ' button-active' : ''}`} onClick={() => {this.props.setSpeed(100)}}>Fast</button>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }
-
+//const defaultState = {
+  //speed: 250,
+  //game: 'running'
+//}
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
     setRes: setRes,

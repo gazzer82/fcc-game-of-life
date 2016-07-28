@@ -4,11 +4,86 @@
 
 //General layout
 
+body {
+  background-image: radial-gradient(#cc4444, #111111);
+  margin: 0;
+  padding: 0;
+  font-family: courier;
+  color: #ddd;
+}
+
+//Text
+h2{
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  color: #ddd;
+}
+
+h3{
+  color: #ddd;
+}
+
+a{
+  text-decoration: none;
+  color: #ddd;
+}
+
+button {
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color:#222;
+}
+
+.button-active{
+  background: #faa;
+  color: #222;
+}
+
+.lower-buttons{
+  width: 90px;
+}
+
+.upper-buttons{
+  width: 80px;
+}
+//grid box
+
+.header-row{
+  background: #333;
+}
+
+.header-button-row{
+  background: #333;
+  box-shadow: 10px 10px 50px #222222;
+  border-radius: 10px 10px 0 0;
+  margin-top: 15px;
+}
+
+.lower-button-col{
+  background: #333;
+  box-shadow: 10px 10px 50px #222222;
+  border: 10px solid #333;
+  border-radius: 0 0 10px;
+  margin-bottom: 15px;
+}
+
 .grid-outer{
   width: 70%;
   padding-left: 15%;
 }
-//grid box
+
+.lower-text{
+  background: #333;
+  box-shadow: 10px 10px 50px #222222;
+  border: 10px solid #333;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 .grid-box{
   //display: inline;
@@ -41,24 +116,13 @@
   padding-top: 100%;
 }
 
-//Cell colors
-.cell{
-  background: $cell-old;
-  animation-name: ease-in-out;
-  animation-duration: 250ms;
+.cell-grid-box{
+  border: 10px solid #333;
+  border-radius: 10px;
+  box-shadow: 10px 10px 50px #222222;
+  background-color: #333;
 }
 
-.cell-old {
-    opacity: 1;
-    transform: translateZ(0);
-}
-
-.cell-alive {
-    opacity: 0.5;
-    transform: translateZ(0);
-}
-
-.cell-dead {
-    opacity: 0;
-    transform: translateZ(0);
+.cell-grid-canvas{
+  background-color: #333;
 }

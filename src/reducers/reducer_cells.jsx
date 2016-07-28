@@ -69,7 +69,7 @@ function setCellClass(generation, status, stateGeneration){
   if(status === 0){
     return 'dead'
   } else {
-      if((stateGeneration - generation) < 3){
+      if((stateGeneration - generation) < 5){
         return 'alive'
       } else {
         return 'old'
@@ -110,15 +110,12 @@ function newState(payload,state){
 }
 
 function calculateState(payload, state){
+  //console.log('Start create state');
+  //var t0 = Date.now();
   let returnState = newState(payload,state);
-  //return state;
-  //const res = current.res;
-  //console.log(newState);
+  //var t1 = Date.now();
+  //console.log('State creation took', t1-t0, 'ms');
   return returnState;
-  //return{
-    //type: CELLS_UPDATED,
-    //payload: updatedState
-  //}
 }
 
 //Respons to actions
@@ -129,13 +126,19 @@ export default function(state = [], action){
       return action.payload;
     //Cell set as alive
     case CELL_ALIVE:
+      console.log('Setting Cell Alive');
       var arrayTemp = state.slice()
       arrayTemp[action.payload].status = 1;
+      arrayTemp[action.payload].class = 'alive';
+      arrayTemp[action.payload].generation = 1;
       return arrayTemp
     //Cell set as dead
     case CELL_DEAD:
+      console.log('Setting Cell Dead');
       var arrayTemp = state.slice()
       arrayTemp[action.payload].status = 0;
+      arrayTemp[action.payload].class = 'dead';
+      arrayTemp[action.payload].generation = 1;
       return arrayTemp
     case STEP_STATE:
       const newState = calculateState(action.payload, state);

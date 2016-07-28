@@ -44,7 +44,13 @@ module.exports = {
       },
       //CSS
       { test: /\.css$/,
-        loader: "style-loader!css-loader"
+        loader: "style-loader!css-loader",
+        exclude: /flexboxgrid/, // so we have to exclude it
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css?modules',
+        include: /flexboxgrid/,
       },
       //Fonts
       {

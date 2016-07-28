@@ -143,9 +143,11 @@ export function stepState(res, generation){
 function createCellObject(total, dead){
   var cells = [];
   for (var i = 0; i < total; i++) {
+    const status = Math.round(Math.random());
     cells.push({
-      status: (dead)? 0: Math.round(Math.random()),
-      generation: 0
+      status: (dead)? 0: status,
+      generation: 0,
+      class: (dead)? 0: (status === 1)? 'alive' : 'dead'
     });
   }
   return cells
@@ -174,7 +176,7 @@ export function clearCells(){
   return (dispatch, getState) => {
     const state = getState();
     dispatch(generateCellsInternal(state.res, true));
-    dispatch(updateGeneration(0));
+    //dispatch(updateGeneration(0));
     //dispatch(stopGame());
   }
 }
